@@ -147,7 +147,11 @@ const reviews = [
           <div class="bg-salt-white rounded-xl border border-warm-cream shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden group">
             <div class="aspect-[4/3] bg-warm-cream overflow-hidden">
               <picture>
-                <source srcset={pretzel.image.replace('.jpg', '.webp')} type="image/webp" />
+                <source
+                  srcset={`${pretzel.image.replace('.jpg', '-400w.webp')} 400w, ${pretzel.image.replace('.jpg', '-800w.webp')} 800w`}
+                  sizes="(max-width: 768px) 100vw, 370px"
+                  type="image/webp"
+                />
                 <img
                   src={pretzel.image}
                   alt={pretzel.alt}
