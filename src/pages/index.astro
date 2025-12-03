@@ -101,7 +101,11 @@ const reviews = [
         <div class="flex-1">
           <div class="aspect-[4/3] rounded-2xl bg-warm-cream overflow-hidden shadow-xl">
             <picture>
-              <source srcset="/images/hero-pretzels.webp" type="image/webp" />
+              <source
+                srcset="/images/hero-pretzels-747w.webp 747w, /images/hero-pretzels-1494w.webp 1494w"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                type="image/webp"
+              />
               <img
                 src="/images/hero-pretzels.jpg"
                 alt="Fresh golden pretzels with coarse sea salt, freshly baked and ready to enjoy"
@@ -263,7 +267,11 @@ const reviews = [
         <div class="flex-1">
           <div class="aspect-square max-w-md mx-auto rounded-2xl bg-salt-white overflow-hidden shadow-lg">
             <picture>
-              <source srcset="/images/momo-baker.webp" type="image/webp" />
+              <source
+                srcset="/images/momo-baker-744w.webp 744w, /images/momo-baker-1488w.webp 1488w"
+                sizes="(max-width: 768px) 100vw, 448px"
+                type="image/webp"
+              />
               <img
                 src="/images/momo-baker.jpg"
                 alt="Momo smiling while holding freshly baked pretzels at the farmers market"
