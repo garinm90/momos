@@ -1,0 +1,37 @@
+---
+import '../styles/global.css'
+import Navigation from '../components/Navigation.astro'
+import Footer from '../components/Footer.astro'
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Handcrafted artisan pretzels baked with love. Find us at your local farmers market!" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <Navigation />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

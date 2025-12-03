@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const reviews = [
+  {
+    stars: 5,
+    text: "These pretzels are absolutely amazing! The perfect balance of soft and chewy. Momo is always so friendly at the market!",
+    author: "Sarah M.",
+    context: "Regular at Downtown Market",
+    date: "November 2024"
+  },
+  {
+    stars: 5,
+    text: "Best pretzels I've ever had! My kids ask for them every weekend. The cinnamon sugar ones are incredible.",
+    author: "Michael R.",
+    context: "Riverside Market Customer",
+    date: "November 2024"
+  },
+  {
+    stars: 5,
+    text: "You can taste the love in every bite. Real homemade quality that reminds me of my grandmother's baking.",
+    author: "Emily T.",
+    context: "First-time visitor",
+    date: "October 2024"
+  },
+  {
+    stars: 5,
+    text: "We ordered pretzels for our office party and they were a HUGE hit! Everyone was asking where to get more.",
+    author: "Jennifer L.",
+    context: "Corporate Event",
+    date: "October 2024"
+  },
+  {
+    stars: 5,
+    text: "The Everything Bagel pretzel is my new obsession. I literally plan my Saturday mornings around the farmers market now.",
+    author: "David K.",
+    context: "Downtown Market Regular",
+    date: "October 2024"
+  },
+  {
+    stars: 5,
+    text: "Momo remembered my daughter's name after just one visit. That personal touch, plus incredible pretzels? We're customers for life!",
+    author: "Amanda S.",
+    context: "Family of four",
+    date: "September 2024"
+  },
+  {
+    stars: 5,
+    text: "I'm gluten-sensitive and rarely eat pretzels, but I had to try one. Worth every bite! So good I didn't even care about consequences.",
+    author: "Chris P.",
+    context: "Occasional treat",
+    date: "September 2024"
+  },
+  {
+    stars: 5,
+    text: "The jalapeño cheddar pretzel has the perfect amount of heat. Not too spicy, but enough to keep you coming back for more!",
+    author: "Maria G.",
+    context: "Spicy food lover",
+    date: "September 2024"
+  },
+  {
+    stars: 5,
+    text: "We had Momo's pretzels at our wedding! Best decision ever. All our guests were raving about them.",
+    author: "The Johnsons",
+    context: "Wedding catering",
+    date: "August 2024"
+  },
+  {
+    stars: 5,
+    text: "Just moved to the area and discovering Momo's was the best welcome gift. Feel like I'm part of the community now!",
+    author: "Tom B.",
+    context: "New resident",
+    date: "August 2024"
+  },
+  {
+    stars: 5,
+    text: "These taste exactly like the pretzels I remember from visiting Germany. Authentic flavor and texture!",
+    author: "Klaus W.",
+    context: "German expat",
+    date: "July 2024"
+  },
+  {
+    stars: 5,
+    text: "My kids love watching Momo twist the pretzels at the booth. It's become our favorite Saturday tradition!",
+    author: "Rachel H.",
+    context: "Mom of three",
+    date: "July 2024"
+  }
+];
+
+const stats = [
+  { number: "500+", label: "Happy Customers" },
+  { number: "5.0", label: "Average Rating" },
+  { number: "100%", label: "Would Recommend" }
+];
+---
+
+<Layout title="Reviews | Momo's Pretzels" description="See what our customers are saying about Momo's Pretzels. Real reviews from real pretzel lovers!">
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-salt-white to-warm-cream py-12">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-10">
+        <div class="text-center md:text-left">
+          <h1 class="font-display text-4xl md:text-5xl font-bold text-deep-brown mb-4">
+            💛 What People Say
+          </h1>
+          <p class="text-lg text-sesame-brown">
+            Don't just take our word for it—hear from our wonderful community of pretzel lovers!
+          </p>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
+          <img
+            src="/images/happy-customers.jpg"
+            alt="Happy customers enjoying pretzels at the farmers market"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
+        </div>
+      </div>
+      <div class="text-center">
+
+      <!-- Stats -->
+      <div class="flex flex-wrap justify-center gap-8 md:gap-16">
+        {stats.map((stat) => (
+          <div class="text-center">
+            <div class="font-display text-4xl md:text-5xl font-bold text-golden-crust">{stat.number}</div>
+            <div class="text-sesame-brown">{stat.label}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Grid -->
+  <section class="py-12 bg-salt-white">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {reviews.map((review) => (
+          <div class="bg-gradient-to-b from-warm-cream to-salt-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <!-- Stars -->
+            <div class="flex gap-1 mb-4">
+              {Array.from({ length: review.stars }).map(() => (
+                <span class="text-golden-crust text-xl">★</span>
+              ))}
+            </div>
+
+            <!-- Quote -->
+            <p class="text-deep-brown italic mb-4 leading-relaxed">"{review.text}"</p>
+
+            <!-- Author -->
+            <div class="border-t border-warm-cream pt-4">
+              <p class="font-semibold text-deep-brown">— {review.author}</p>
+              <p class="text-sm text-sesame-brown">{review.context}</p>
+              <p class="text-xs text-sesame-brown/70 mt-1">{review.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Leave a Review CTA -->
+  <section class="py-12 bg-warm-cream">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="font-display text-3xl font-bold text-deep-brown mb-4">
+        Tried Our Pretzels?
+      </h2>
+      <p class="text-sesame-brown mb-6">
+        We'd love to hear from you! Share your experience on Facebook or drop us a message.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="https://facebook.com/momospretzels/reviews"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-6 py-3 rounded-full font-semibold hover:bg-caramel transition-all"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+          Leave a Review
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center gap-2 bg-salt-white text-deep-brown px-6 py-3 rounded-full font-semibold border-2 border-golden-crust hover:bg-warm-cream transition-all"
+        >
+          Send Us Feedback
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Follow CTA -->
+  <section class="py-12 bg-deep-brown text-warm-cream">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="font-display text-3xl font-bold text-salt-white mb-4">
+        Join the Momo's Family
+      </h2>
+      <p class="text-lg mb-6">
+        Follow us for more customer stories, behind-the-scenes peeks, and of course—pretzel updates!
+      </p>
+      <div class="flex justify-center gap-4">
+        <a
+          href="https://facebook.com/momospretzels"
+          target="_blank"
+          rel="noopener"
+          class="w-12 h-12 rounded-full bg-sesame-brown/30 flex items-center justify-center text-warm-cream hover:bg-golden-crust hover:scale-110 transition-all"
+          aria-label="Facebook"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+        </a>
+        <a
+          href="https://instagram.com/momospretzels"
+          target="_blank"
+          rel="noopener"
+          class="w-12 h-12 rounded-full bg-sesame-brown/30 flex items-center justify-center text-warm-cream hover:bg-golden-crust hover:scale-110 transition-all"
+          aria-label="Instagram"
+        >
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

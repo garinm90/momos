@@ -1,0 +1,344 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Sample menu items for featured section
+const featuredPretzels = [
+  {
+    name: "Classic Salted",
+    description: "Traditional soft-baked pretzel with coarse sea salt. Our signature recipe.",
+    badge: "Best Seller",
+    image: "/images/classic-salted-pretzel.jpg",
+    alt: "Classic salted pretzel with coarse sea salt on a golden brown twisted surface"
+  },
+  {
+    name: "Cinnamon Sugar",
+    description: "Sweet and buttery with a perfect coating of cinnamon sugar.",
+    badge: "Fan Favorite",
+    image: "/images/cinnamon-sugar-pretzel.jpg",
+    alt: "Sweet cinnamon sugar pretzel with a sugary coating and butter glaze"
+  },
+  {
+    name: "Everything Bagel",
+    description: "Topped with our house blend of sesame, poppy, garlic, and onion.",
+    badge: "New",
+    image: "/images/everything-pretzel.jpg",
+    alt: "Everything pretzel topped with sesame seeds, poppy seeds, garlic, and onion"
+  }
+];
+
+// Upcoming markets
+const upcomingMarkets = [
+  {
+    day: "Saturday",
+    date: "Dec 7",
+    name: "Downtown Farmers Market",
+    time: "8:00 AM - 1:00 PM",
+    location: "123 Main Street, Booth #5"
+  },
+  {
+    day: "Sunday",
+    date: "Dec 8",
+    name: "Riverside Artisan Market",
+    time: "9:00 AM - 2:00 PM",
+    location: "456 River Road, Tent C"
+  }
+];
+
+// Reviews
+const reviews = [
+  {
+    stars: 5,
+    text: "These pretzels are absolutely amazing! The perfect balance of soft and chewy. Momo is always so friendly at the market!",
+    author: "Sarah M.",
+    context: "Regular at Downtown Market"
+  },
+  {
+    stars: 5,
+    text: "Best pretzels I've ever had! My kids ask for them every weekend. The cinnamon sugar ones are incredible.",
+    author: "Michael R.",
+    context: "Riverside Market Customer"
+  },
+  {
+    stars: 5,
+    text: "You can taste the love in every bite. Real homemade quality that reminds me of my grandmother's baking.",
+    author: "Emily T.",
+    context: "First-time visitor"
+  }
+];
+---
+
+<Layout title="Momo's Pretzels | Handcrafted Artisan Pretzels">
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-b from-salt-white to-warm-cream py-12 md:py-20">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <!-- Text Content -->
+        <div class="flex-1 text-center md:text-left">
+          <div class="w-28 h-28 md:w-36 md:h-36 mx-auto md:mx-0 rounded-full bg-golden-crust flex items-center justify-center text-6xl md:text-7xl mb-6 shadow-lg">
+            🥨
+          </div>
+          <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-deep-brown mb-3">
+            Momo's Pretzels
+          </h1>
+          <p class="font-accent text-2xl md:text-3xl text-butter-yellow mb-4">
+            Baked with Love
+          </p>
+          <p class="text-lg text-sesame-brown mb-8 max-w-lg mx-auto md:mx-0">
+            Handcrafted artisan pretzels made fresh daily for our community. Find us at your local farmers market!
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+            <a
+              href="/find-us"
+              class="inline-flex items-center justify-center gap-2 bg-golden-crust text-salt-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-caramel hover:-translate-y-0.5 transition-all shadow-md hover:shadow-lg"
+            >
+              Find Us at Markets
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            <a
+              href="/menu"
+              class="inline-flex items-center justify-center gap-2 bg-salt-white text-deep-brown px-8 py-4 rounded-full font-semibold text-lg border-2 border-golden-crust hover:bg-warm-cream transition-all"
+            >
+              See Our Menu
+            </a>
+          </div>
+        </div>
+        <!-- Hero Image -->
+        <div class="flex-1">
+          <div class="aspect-[4/3] rounded-2xl bg-warm-cream overflow-hidden shadow-xl">
+            <img
+              src="/images/hero-pretzels.jpg"
+              alt="Fresh golden pretzels with coarse sea salt, freshly baked and ready to enjoy"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Pretzels -->
+  <section class="py-16 bg-salt-white">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown text-center mb-3">
+        🥨 Featured Pretzels 🥨
+      </h2>
+      <p class="text-sesame-brown text-center mb-10 max-w-2xl mx-auto">
+        Made fresh every market day with love and the finest ingredients
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {featuredPretzels.map((pretzel) => (
+          <div class="bg-salt-white rounded-xl border border-warm-cream shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden group">
+            <div class="aspect-[4/3] bg-warm-cream overflow-hidden">
+              <img
+                src={pretzel.image}
+                alt={pretzel.alt}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                loading="lazy"
+              />
+            </div>
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <h3 class="font-display text-xl font-semibold text-deep-brown">{pretzel.name}</h3>
+                <span class="inline-block bg-butter-yellow text-deep-brown text-xs font-semibold px-3 py-1 rounded-full whitespace-nowrap">
+                  {pretzel.badge}
+                </span>
+              </div>
+              <p class="text-sesame-brown text-sm">{pretzel.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a
+          href="/menu"
+          class="inline-flex items-center gap-2 text-caramel hover:text-deep-brown font-semibold transition-colors"
+        >
+          See Full Menu
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Find Us This Week -->
+  <section class="py-16 bg-warm-cream">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown text-center mb-3">
+        📍 Find Us This Week 📍
+      </h2>
+      <p class="text-sesame-brown text-center mb-10 max-w-2xl mx-auto">
+        Come say hello and grab some fresh-baked pretzels!
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {upcomingMarkets.map((market) => (
+          <div class="bg-salt-white rounded-xl overflow-hidden shadow-sm border-l-4 border-golden-crust">
+            <div class="bg-deep-brown text-salt-white px-5 py-3">
+              <span class="font-semibold uppercase tracking-wide text-sm">
+                {market.day}, {market.date}
+              </span>
+            </div>
+            <div class="p-5">
+              <h3 class="font-display text-lg font-semibold text-deep-brown mb-1">
+                {market.name}
+              </h3>
+              <p class="text-sesame-brown mb-3">{market.time}</p>
+              <p class="flex items-start gap-2 text-sm text-sesame-brown mb-4">
+                <span>📍</span>
+                {market.location}
+              </p>
+              <a
+                href={`https://maps.google.com/?q=${encodeURIComponent(market.location)}`}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-1 text-caramel hover:text-deep-brown font-medium text-sm transition-colors"
+              >
+                Get Directions
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a
+          href="/find-us"
+          class="inline-flex items-center gap-2 text-caramel hover:text-deep-brown font-semibold transition-colors"
+        >
+          See Full Schedule
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="py-16 bg-salt-white">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown text-center mb-3">
+        💛 What People Say 💛
+      </h2>
+      <p class="text-sesame-brown text-center mb-10 max-w-2xl mx-auto">
+        Don't just take our word for it - hear from our pretzel-loving customers!
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {reviews.map((review) => (
+          <div class="bg-gradient-to-b from-warm-cream to-salt-white rounded-2xl p-6 shadow-sm">
+            <div class="flex gap-1 mb-4">
+              {Array.from({ length: review.stars }).map(() => (
+                <span class="text-golden-crust text-xl">★</span>
+              ))}
+            </div>
+            <p class="text-deep-brown italic mb-4">"{review.text}"</p>
+            <div>
+              <p class="font-semibold text-deep-brown">— {review.author}</p>
+              <p class="text-sm text-sesame-brown">{review.context}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="text-center mt-10">
+        <a
+          href="/reviews"
+          class="inline-flex items-center gap-2 text-caramel hover:text-deep-brown font-semibold transition-colors"
+        >
+          Read All Reviews
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Teaser -->
+  <section class="py-16 bg-warm-cream">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <div class="flex-1">
+          <div class="aspect-square max-w-md mx-auto rounded-2xl bg-salt-white overflow-hidden shadow-lg">
+            <img
+              src="/images/momo-baker.jpg"
+              alt="Momo smiling while holding freshly baked pretzels at the farmers market"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="flex-1 text-center md:text-left">
+          <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown mb-4">
+            Our Story
+          </h2>
+          <p class="text-sesame-brown mb-4 text-lg">
+            Every pretzel tells a story of tradition, love, and the joy of sharing handcrafted food with our community.
+          </p>
+          <p class="text-sesame-brown mb-6">
+            What started as a family recipe passed down through generations has become a weekend tradition for families throughout our community. We believe in keeping things simple: the best ingredients, time-honored techniques, and a whole lot of love in every twist.
+          </p>
+          <a
+            href="/about"
+            class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-6 py-3 rounded-full font-semibold hover:bg-caramel hover:-translate-y-0.5 transition-all shadow-md"
+          >
+            Learn More About Us
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social CTA -->
+  <section class="py-16 bg-deep-brown text-warm-cream">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-salt-white mb-4">
+        Stay Connected
+      </h2>
+      <p class="text-lg mb-8">
+        Follow us for market updates, new flavors, and special announcements!
+      </p>
+      <div class="flex justify-center gap-6">
+        <a
+          href="https://facebook.com/momospretzels"
+          target="_blank"
+          rel="noopener"
+          class="w-14 h-14 rounded-full bg-sesame-brown/30 flex items-center justify-center text-warm-cream hover:bg-golden-crust hover:scale-110 transition-all"
+          aria-label="Facebook"
+        >
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+        </a>
+        <a
+          href="https://instagram.com/momospretzels"
+          target="_blank"
+          rel="noopener"
+          class="w-14 h-14 rounded-full bg-sesame-brown/30 flex items-center justify-center text-warm-cream hover:bg-golden-crust hover:scale-110 transition-all"
+          aria-label="Instagram"
+        >
+          <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a
+          href="mailto:hello@momospretzels.com"
+          class="w-14 h-14 rounded-full bg-sesame-brown/30 flex items-center justify-center text-warm-cream hover:bg-golden-crust hover:scale-110 transition-all"
+          aria-label="Email"
+        >
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

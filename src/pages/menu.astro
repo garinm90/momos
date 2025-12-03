@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const food = [
+  {
+    name: "Pretzel",
+    description: "Our signature soft-baked pretzel with coarse sea salt. Crispy on the outside, perfectly soft and chewy inside.",
+    image: "/images/menu-salted-pretzel.jpg",
+    alt: "Golden brown soft pretzel with coarse sea salt"
+  },
+  {
+    name: "Pretzel Dog",
+    description: "A juicy all beef hot dog wrapped in our fresh-baked pretzel dough. The perfect savory treat!",
+    image: "/images/menu-pretzel-dog.jpg",
+    alt: "Pretzel-wrapped hot dog with golden pretzel bread"
+  },
+  {
+    name: "Pretzel Wrapped Bratwurst",
+    description: "A premium bratwurst wrapped in our signature pretzel dough and baked to golden perfection. Hearty and delicious!",
+    image: "/images/menu-bratwurst.jpg",
+    alt: "Premium bratwurst wrapped in pretzel dough"
+  }
+];
+
+const drinks = [
+  {
+    name: "Original Lemonade",
+    description: "Fresh-squeezed lemonade made with real lemons.",
+    image: "/images/menu-original-lemonade.jpg",
+    alt: "Fresh-squeezed lemonade in a cup with lemon slices"
+  },
+  {
+    name: "Strawberry Lemonade",
+    description: "Our original lemonade with fresh strawberry puree.",
+    image: "/images/menu-strawberry-lemonade.jpg",
+    alt: "Pink strawberry lemonade with fresh strawberries"
+  },
+  {
+    name: "Bottled Water",
+    description: "Cold and refreshing.",
+    image: "/images/menu-water.jpg",
+    alt: "Cold bottled water"
+  }
+];
+---
+
+<Layout title="Menu | MoMo's Pretzels" description="Fresh-baked pretzels, pretzel dogs, and refreshing lemonade. Simple, delicious, made with love.">
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-salt-white to-warm-cream py-12">
+    <div class="max-w-6xl mx-auto px-5 text-center">
+      <h1 class="font-display text-4xl md:text-5xl font-bold text-deep-brown mb-4">
+        Our Pretzel Menu
+      </h1>
+      <p class="text-lg text-sesame-brown max-w-2xl mx-auto">
+        Fresh-baked pretzels and ice-cold lemonade. Made with love, simple ingredients, and old-fashioned techniques.
+      </p>
+    </div>
+  </section>
+
+  <!-- Food -->
+  <section class="py-12 bg-salt-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="font-display text-3xl font-bold text-deep-brown mb-8 text-center">
+        Food
+      </h2>
+      <div class="space-y-6">
+        {food.map((item) => (
+          <div class="bg-warm-cream rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/3 aspect-[4/3] md:aspect-square">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex-1 p-6 flex flex-col justify-center">
+                <h3 class="font-display text-xl font-semibold text-deep-brown mb-2">{item.name}</h3>
+                <p class="text-sesame-brown text-sm">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Drinks -->
+  <section class="py-12 bg-warm-cream">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="font-display text-3xl font-bold text-deep-brown mb-8 text-center">
+        Drinks
+      </h2>
+      <div class="space-y-6">
+        {drinks.map((item) => (
+          <div class="bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex flex-col md:flex-row">
+              <div class="md:w-1/3 aspect-[4/3] md:aspect-square">
+                <img
+                  src={item.image}
+                  alt={item.alt}
+                  class="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex-1 p-6 flex flex-col justify-center">
+                <h3 class="font-display text-xl font-semibold text-deep-brown mb-2">{item.name}</h3>
+                <p class="text-sesame-brown text-sm">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Special Orders CTA -->
+  <section class="py-12 bg-deep-brown text-warm-cream">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="font-display text-3xl font-bold text-salt-white mb-4">
+        Need Something Special?
+      </h2>
+      <p class="text-lg mb-6">
+        Planning an event or want a custom order? We'd love to help make your occasion extra special!
+      </p>
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-caramel transition-all"
+      >
+        Contact Us
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+</Layout>

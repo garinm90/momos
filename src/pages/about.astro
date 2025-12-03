@@ -1,0 +1,255 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const values = [
+  {
+    icon: "🌾",
+    title: "Fresh Ingredients",
+    description: "We use only the finest, simple ingredients—no preservatives, no shortcuts."
+  },
+  {
+    icon: "👵",
+    title: "Traditional Methods",
+    description: "Every pretzel is hand-twisted using techniques passed down through generations."
+  },
+  {
+    icon: "🤝",
+    title: "Community First",
+    description: "We believe in building relationships, one pretzel at a time."
+  },
+  {
+    icon: "❤️",
+    title: "Baked with Love",
+    description: "Every twist, every batch is made with genuine care and passion."
+  }
+];
+
+const steps = [
+  {
+    number: "1",
+    title: "Mix & Rest",
+    description: "We start with a simple dough: flour, water, yeast, butter, and salt. Then we let it rest and rise."
+  },
+  {
+    number: "2",
+    title: "Hand-Twist",
+    description: "Each pretzel is hand-rolled and twisted into its iconic shape. No machines, just hands and heart."
+  },
+  {
+    number: "3",
+    title: "Dip & Top",
+    description: "A quick dip in our special solution gives that classic pretzel texture, then we add our toppings."
+  },
+  {
+    number: "4",
+    title: "Bake Fresh",
+    description: "Every pretzel is baked fresh on market day. We wake up early so you can enjoy them warm!"
+  }
+];
+---
+
+<Layout title="About | Momo's Pretzels" description="Learn about Momo's Pretzels - our story, values, and the love we put into every handcrafted pretzel.">
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-salt-white to-warm-cream py-12">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="flex flex-col md:flex-row items-center gap-10">
+        <!-- Image -->
+        <div class="flex-1">
+          <div class="aspect-square max-w-md mx-auto rounded-2xl bg-warm-cream overflow-hidden shadow-xl">
+            <img
+              src="/images/momo-portrait.jpg"
+              alt="Momo, the baker and owner of Momo's Pretzels, in her apron with a warm smile"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="flex-1 text-center md:text-left">
+          <h1 class="font-display text-4xl md:text-5xl font-bold text-deep-brown mb-4">
+            Meet Momo
+          </h1>
+          <p class="font-accent text-2xl text-butter-yellow mb-6">
+            The Heart Behind the Pretzels
+          </p>
+          <p class="text-sesame-brown text-lg mb-4">
+            Hi there! I'm Momo, and these pretzels are my passion. What started as baking for my family has grown into something I never imagined—sharing my grandmother's recipe with our wonderful community.
+          </p>
+          <p class="text-sesame-brown">
+            Every weekend, you'll find me at the farmers market, twisting pretzels and chatting with neighbors who've become friends. There's nothing quite like seeing someone take that first bite and watching their face light up.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-16 bg-salt-white">
+    <div class="max-w-4xl mx-auto px-5">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown text-center mb-8">
+        Our Story
+      </h2>
+
+      <div class="prose prose-lg max-w-none text-sesame-brown">
+        <p class="text-lg leading-relaxed mb-6">
+          It all started in my grandmother's kitchen. As a child, I'd watch her hands move with practiced ease, transforming simple dough into golden, twisted masterpieces. She taught me that baking isn't just about following a recipe—it's about putting love into every step.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Years later, when I started bringing pretzels to neighborhood gatherings, something magical happened. People didn't just eat them—they <em>connected</em> over them. Strangers became friends over shared pretzel bites. Kids' eyes lit up watching the twisting process. That's when I knew this was more than a hobby.
+        </p>
+
+        <p class="text-lg leading-relaxed mb-6">
+          Today, Momo's Pretzels is my way of continuing that tradition of connection. Each pretzel is still made by hand, using the same simple ingredients my grandmother used. No shortcuts, no preservatives—just honest food made with love.
+        </p>
+
+        <p class="text-lg leading-relaxed text-deep-brown font-medium">
+          When you buy a pretzel from us, you're not just getting a snack. You're becoming part of our story, and we're grateful to be part of yours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section class="py-16 bg-warm-cream">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown text-center mb-10">
+        Our Values
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {values.map((value) => (
+          <div class="bg-salt-white rounded-xl p-6 text-center shadow-sm">
+            <div class="text-5xl mb-4">{value.icon}</div>
+            <h3 class="font-display text-xl font-semibold text-deep-brown mb-2">{value.title}</h3>
+            <p class="text-sesame-brown text-sm">{value.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- The Pretzel Journey -->
+  <section class="py-16 bg-salt-white">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown text-center mb-4">
+        The Pretzel Journey
+      </h2>
+      <p class="text-sesame-brown text-center mb-10 max-w-2xl mx-auto">
+        From dough to delicious—here's how we make the magic happen
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {steps.map((step) => (
+          <div class="relative">
+            <div class="bg-warm-cream rounded-xl p-6">
+              <div class="w-12 h-12 rounded-full bg-golden-crust text-salt-white flex items-center justify-center font-display text-xl font-bold mb-4">
+                {step.number}
+              </div>
+              <h3 class="font-display text-xl font-semibold text-deep-brown mb-2">{step.title}</h3>
+              <p class="text-sesame-brown text-sm">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="py-16 bg-warm-cream">
+    <div class="max-w-6xl mx-auto px-5">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown text-center mb-10">
+        📸 From Our Kitchen
+      </h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <img
+            src="/images/gallery-hands-twisting.jpg"
+            alt="Hands twisting pretzel dough into traditional shape"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <img
+            src="/images/gallery-dough-rising.jpg"
+            alt="Fresh pretzel dough rising in bowls"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <img
+            src="/images/gallery-oven-baking.jpg"
+            alt="Golden pretzels baking in the oven"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <img
+            src="/images/gallery-market-display.jpg"
+            alt="Pretzels displayed at the farmers market booth"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <img
+            src="/images/gallery-salting.jpg"
+            alt="Adding coarse sea salt to freshly baked pretzels"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <img
+            src="/images/gallery-customers.jpg"
+            alt="Happy customers enjoying pretzels at the market"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <img
+            src="/images/gallery-ingredients.jpg"
+            alt="Fresh baking ingredients - flour, salt, butter, yeast"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+          <img
+            src="/images/gallery-cooling-rack.jpg"
+            alt="Fresh pretzels cooling on a wire rack"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 bg-deep-brown text-warm-cream">
+    <div class="max-w-3xl mx-auto px-5 text-center">
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-salt-white mb-4">
+        Come Say Hello!
+      </h2>
+      <p class="text-lg mb-8">
+        We'd love to meet you at one of our markets. Stop by, try a pretzel, and become part of the Momo's family!
+      </p>
+      <a
+        href="/find-us"
+        class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-caramel transition-all"
+      >
+        Find Our Next Market
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,52 @@
+/* Google Fonts - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Playfair+Display:wght@600;700&family=Satisfy&display=swap');
+
+@import "tailwindcss";
+
+/* Momo's Pretzels Custom Theme */
+@theme {
+  /* Primary Colors */
+  --color-golden-crust: #D4A574;
+  --color-deep-brown: #6B4423;
+  --color-warm-cream: #F5E6D3;
+  --color-butter-yellow: #F4D58D;
+
+  /* Secondary Colors */
+  --color-salt-white: #FFFEF9;
+  --color-sesame-brown: #8B6F47;
+  --color-caramel: #C68642;
+  --color-sage-green: #9CAF88;
+
+  /* Semantic Colors */
+  --color-success: #7FA86A;
+  --color-error: #C55A47;
+  --color-info: #7B9FB0;
+
+  /* Fonts */
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Nunito', sans-serif;
+  --font-accent: 'Satisfy', cursive;
+}
+
+/* Base Styles */
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-salt-white);
+  color: var(--color-deep-brown);
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus Styles for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-golden-crust);
+  outline-offset: 4px;
+  border-radius: 4px;
+}

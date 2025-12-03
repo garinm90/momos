@@ -1,0 +1,34 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "dev",
+      "label": "npm: dev",
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": {
+          "regexp": "^$"
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "localhost"
+        }
+      }
+    },
+    {
+      "type": "npm",
+      "script": "build",
+      "label": "npm: build",
+      "problemMatcher": []
+    },
+    {
+      "type": "npm",
+      "script": "preview",
+      "label": "npm: preview",
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}
