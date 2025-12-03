@@ -61,6 +61,18 @@ const reviews = [
 ---
 
 <Layout title="Momo's Pretzels | Handcrafted Artisan Pretzels">
+  <!-- Preload LCP image for faster discovery -->
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    href="/images/hero-pretzels-747w.webp"
+    imagesrcset="/images/hero-pretzels-747w.webp 747w, /images/hero-pretzels-1494w.webp 1494w"
+    imagesizes="(max-width: 768px) 100vw, 50vw"
+    type="image/webp"
+    fetchpriority="high"
+  />
+
   <!-- Hero Section -->
   <section class="bg-gradient-to-b from-salt-white to-warm-cream py-12 md:py-20">
     <div class="max-w-6xl mx-auto px-5">
@@ -111,6 +123,7 @@ const reviews = [
                 alt="Fresh golden pretzels with coarse sea salt, freshly baked and ready to enjoy"
                 class="w-full h-full object-cover"
                 loading="eager"
+                fetchpriority="high"
               />
             </picture>
           </div>
