@@ -109,12 +109,15 @@ const stats = [
           </p>
         </div>
         <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-          <img
-            src="/images/happy-customers.jpg"
-            alt="Happy customers enjoying pretzels at the farmers market"
-            class="w-full h-full object-cover"
-            loading="eager"
-          />
+          <picture>
+            <source srcset="/images/happy-customers.webp" type="image/webp" />
+            <img
+              src="/images/happy-customers.jpg"
+              alt="Happy customers enjoying pretzels at the farmers market"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
+          </picture>
         </div>
       </div>
       <div class="text-center">

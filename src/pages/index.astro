@@ -100,12 +100,15 @@ const reviews = [
         <!-- Hero Image -->
         <div class="flex-1">
           <div class="aspect-[4/3] rounded-2xl bg-warm-cream overflow-hidden shadow-xl">
-            <img
-              src="/images/hero-pretzels.jpg"
-              alt="Fresh golden pretzels with coarse sea salt, freshly baked and ready to enjoy"
-              class="w-full h-full object-cover"
-              loading="eager"
-            />
+            <picture>
+              <source srcset="/images/hero-pretzels.webp" type="image/webp" />
+              <img
+                src="/images/hero-pretzels.jpg"
+                alt="Fresh golden pretzels with coarse sea salt, freshly baked and ready to enjoy"
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </picture>
           </div>
         </div>
       </div>
@@ -126,12 +129,15 @@ const reviews = [
         {featuredPretzels.map((pretzel) => (
           <div class="bg-salt-white rounded-xl border border-warm-cream shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden group">
             <div class="aspect-[4/3] bg-warm-cream overflow-hidden">
-              <img
-                src={pretzel.image}
-                alt={pretzel.alt}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
+              <picture>
+                <source srcset={pretzel.image.replace('.jpg', '.webp')} type="image/webp" />
+                <img
+                  src={pretzel.image}
+                  alt={pretzel.alt}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </picture>
             </div>
             <div class="p-5">
               <div class="flex items-start justify-between gap-2 mb-2">
@@ -256,12 +262,15 @@ const reviews = [
       <div class="flex flex-col md:flex-row items-center gap-10">
         <div class="flex-1">
           <div class="aspect-square max-w-md mx-auto rounded-2xl bg-salt-white overflow-hidden shadow-lg">
-            <img
-              src="/images/momo-baker.jpg"
-              alt="Momo smiling while holding freshly baked pretzels at the farmers market"
-              class="w-full h-full object-cover"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset="/images/momo-baker.webp" type="image/webp" />
+              <img
+                src="/images/momo-baker.jpg"
+                alt="Momo smiling while holding freshly baked pretzels at the farmers market"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </picture>
           </div>
         </div>
         <div class="flex-1 text-center md:text-left">
