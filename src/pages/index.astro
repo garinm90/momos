@@ -18,51 +18,44 @@ const featuredPretzels = [
     alt: "Sweet cinnamon sugar pretzel with a sugary coating and butter glaze"
   },
   {
-    name: "Everything Bagel",
-    description: "Topped with our house blend of sesame, poppy, garlic, and onion.",
+    name: "Garlic Parmesan",
+    description: "Savory and rich with roasted garlic and aged parmesan cheese.",
     badge: "New",
-    image: "/images/everything-pretzel.jpg",
-    alt: "Everything pretzel topped with sesame seeds, poppy seeds, garlic, and onion"
+    image: "/images/garlic-parmesan-pretzel.jpg",
+    alt: "Garlic parmesan pretzel topped with roasted garlic and melted parmesan cheese"
   }
 ];
 
-// Upcoming markets
-const upcomingMarkets = [
-  {
-    day: "Saturday",
-    date: "Dec 7",
-    name: "Downtown Farmers Market",
-    time: "8:00 AM - 1:00 PM",
-    location: "123 Main Street, Booth #5"
-  },
-  {
-    day: "Sunday",
-    date: "Dec 8",
-    name: "Riverside Artisan Market",
-    time: "9:00 AM - 2:00 PM",
-    location: "456 River Road, Tent C"
-  }
-];
+// Current location
+const currentLocation = {
+  name: "Christkindlmarket Roswell",
+  dates: "November 21st – December 23rd",
+  venue: "Bulloch Hall Roswell",
+  address: "180 Bulloch Ave, Roswell, GA 30075",
+  mapsUrl: "https://maps.app.goo.gl/7PNpGqz7Ztugzuux5",
+  hours: [
+    { days: "Monday – Thursday", time: "3 pm – 8 pm" },
+    { days: "Friday & Saturday", time: "12 pm – 9 pm" },
+    { days: "Sunday", time: "12 pm – 8 pm" }
+  ]
+};
 
 // Reviews
 const reviews = [
   {
     stars: 5,
     text: "These pretzels are absolutely amazing! The perfect balance of soft and chewy. Momo is always so friendly at the market!",
-    author: "Sarah M.",
-    context: "Regular at Downtown Market"
+    author: "Sarah M."
   },
   {
     stars: 5,
     text: "Best pretzels I've ever had! My kids ask for them every weekend. The cinnamon sugar ones are incredible.",
-    author: "Michael R.",
-    context: "Riverside Market Customer"
+    author: "Michael R."
   },
   {
     stars: 5,
     text: "You can taste the love in every bite. Real homemade quality that reminds me of my grandmother's baking.",
-    author: "Emily T.",
-    context: "First-time visitor"
+    author: "Emily T."
   }
 ];
 ---
@@ -167,59 +160,54 @@ const reviews = [
     </div>
   </section>
 
-  <!-- Find Us This Week -->
+  <!-- Find Us -->
   <section class="py-16 bg-warm-cream">
     <div class="max-w-6xl mx-auto px-5">
       <h2 class="font-display text-3xl md:text-4xl font-bold text-deep-brown text-center mb-3">
-        📍 Find Us This Week 📍
+        📍 Find Us 📍
       </h2>
       <p class="text-sesame-brown text-center mb-10 max-w-2xl mx-auto">
         Come say hello and grab some fresh-baked pretzels!
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-        {upcomingMarkets.map((market) => (
-          <div class="bg-salt-white rounded-xl overflow-hidden shadow-sm border-l-4 border-golden-crust">
-            <div class="bg-deep-brown text-salt-white px-5 py-3">
-              <span class="font-semibold uppercase tracking-wide text-sm">
-                {market.day}, {market.date}
-              </span>
-            </div>
-            <div class="p-5">
-              <h3 class="font-display text-lg font-semibold text-deep-brown mb-1">
-                {market.name}
-              </h3>
-              <p class="text-sesame-brown mb-3">{market.time}</p>
-              <p class="flex items-start gap-2 text-sm text-sesame-brown mb-4">
-                <span>📍</span>
-                {market.location}
-              </p>
-              <a
-                href={`https://maps.google.com/?q=${encodeURIComponent(market.location)}`}
-                target="_blank"
-                rel="noopener"
-                class="inline-flex items-center gap-1 text-caramel hover:text-deep-brown font-medium text-sm transition-colors"
-              >
-                Get Directions
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-              </a>
-            </div>
+      <div class="max-w-xl mx-auto">
+        <div class="bg-salt-white rounded-xl overflow-hidden shadow-md border-l-4 border-golden-crust">
+          <div class="bg-deep-brown text-salt-white px-5 py-4">
+            <h3 class="font-display text-xl font-semibold">{currentLocation.name}</h3>
+            <p class="text-warm-cream/80 text-sm mt-1">{currentLocation.dates}</p>
           </div>
-        ))}
-      </div>
+          <div class="p-6">
+            <p class="font-semibold text-deep-brown mb-1">{currentLocation.venue}</p>
+            <p class="flex items-start gap-2 text-sesame-brown mb-5">
+              <span>📍</span>
+              {currentLocation.address}
+            </p>
 
-      <div class="text-center mt-10">
-        <a
-          href="/find-us"
-          class="inline-flex items-center gap-2 text-caramel hover:text-deep-brown font-semibold transition-colors"
-        >
-          See Full Schedule
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-          </svg>
-        </a>
+            <div class="border-t border-warm-cream pt-4 mb-5">
+              <p class="font-semibold text-deep-brown mb-3">Hours</p>
+              <div class="space-y-2">
+                {currentLocation.hours.map((schedule) => (
+                  <div class="flex justify-between text-sesame-brown">
+                    <span>{schedule.days}</span>
+                    <span class="font-medium">{schedule.time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <a
+              href={currentLocation.mapsUrl}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-5 py-2.5 rounded-full font-medium hover:bg-caramel transition-colors"
+            >
+              Get Directions
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -243,10 +231,7 @@ const reviews = [
               ))}
             </div>
             <p class="text-deep-brown italic mb-4">"{review.text}"</p>
-            <div>
-              <p class="font-semibold text-deep-brown">— {review.author}</p>
-              <p class="text-sm text-sesame-brown">{review.context}</p>
-            </div>
+            <p class="font-semibold text-deep-brown">— {review.author}</p>
           </div>
         ))}
       </div>

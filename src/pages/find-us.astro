@@ -1,62 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const markets = [
-  {
-    day: "Saturday",
-    date: "Dec 7, 2024",
-    name: "Downtown Farmers Market",
-    time: "8:00 AM - 1:00 PM",
-    address: "123 Main Street",
-    booth: "Booth #5",
-    description: "Our flagship market! Find us near the fountain."
-  },
-  {
-    day: "Sunday",
-    date: "Dec 8, 2024",
-    name: "Riverside Artisan Market",
-    time: "9:00 AM - 2:00 PM",
-    address: "456 River Road",
-    booth: "Tent C",
-    description: "Beautiful riverside setting with live music."
-  },
-  {
-    day: "Saturday",
-    date: "Dec 14, 2024",
-    name: "Downtown Farmers Market",
-    time: "8:00 AM - 1:00 PM",
-    address: "123 Main Street",
-    booth: "Booth #5",
-    description: "Our flagship market! Find us near the fountain."
-  },
-  {
-    day: "Sunday",
-    date: "Dec 15, 2024",
-    name: "Holiday Craft Fair",
-    time: "10:00 AM - 4:00 PM",
-    address: "789 Community Center Way",
-    booth: "Indoor Booth #12",
-    description: "Special holiday market with extended hours!"
-  },
-  {
-    day: "Saturday",
-    date: "Dec 21, 2024",
-    name: "Downtown Farmers Market",
-    time: "8:00 AM - 1:00 PM",
-    address: "123 Main Street",
-    booth: "Booth #5",
-    description: "Last market before Christmas!"
-  },
-  {
-    day: "Sunday",
-    date: "Dec 22, 2024",
-    name: "Riverside Artisan Market",
-    time: "9:00 AM - 2:00 PM",
-    address: "456 River Road",
-    booth: "Tent C",
-    description: "Get your holiday pretzels here!"
-  }
-];
+// Current location
+const currentLocation = {
+  name: "Christkindlmarket Roswell",
+  dates: "November 21st – December 23rd",
+  venue: "Bulloch Hall Roswell",
+  address: "180 Bulloch Ave, Roswell, GA 30075",
+  mapsUrl: "https://maps.app.goo.gl/7PNpGqz7Ztugzuux5",
+  hours: [
+    { days: "Monday – Thursday", time: "3 pm – 8 pm" },
+    { days: "Friday & Saturday", time: "12 pm – 9 pm" },
+    { days: "Sunday", time: "12 pm – 8 pm" }
+  ]
+};
 ---
 
 <Layout title="Find Us | Momo's Pretzels" description="Find Momo's Pretzels at farmers markets near you. Check our schedule for upcoming market dates and locations.">
@@ -91,51 +48,44 @@ const markets = [
         Upcoming Markets
       </h2>
 
-      <div class="space-y-4">
-        {markets.map((market, index) => (
-          <div class={`bg-salt-white rounded-xl overflow-hidden shadow-sm border-l-4 border-golden-crust ${index === 0 ? 'ring-2 ring-golden-crust ring-offset-2' : ''}`}>
-            <div class="flex flex-col md:flex-row">
-              <!-- Date -->
-              <div class="bg-deep-brown text-salt-white px-6 py-4 md:py-6 md:w-48 flex flex-col justify-center">
-                <span class="text-sm uppercase tracking-wide opacity-80">{market.day}</span>
-                <span class="font-display text-xl font-bold">{market.date}</span>
-              </div>
+      <div class="max-w-xl mx-auto">
+        <div class="bg-salt-white rounded-xl overflow-hidden shadow-md border-l-4 border-golden-crust">
+          <div class="bg-deep-brown text-salt-white px-5 py-4">
+            <h3 class="font-display text-xl font-semibold">{currentLocation.name}</h3>
+            <p class="text-warm-cream/80 text-sm mt-1">{currentLocation.dates}</p>
+          </div>
+          <div class="p-6">
+            <p class="font-semibold text-deep-brown mb-1">{currentLocation.venue}</p>
+            <p class="flex items-start gap-2 text-sesame-brown mb-5">
+              <span>📍</span>
+              {currentLocation.address}
+            </p>
 
-              <!-- Details -->
-              <div class="flex-1 p-5 md:p-6">
-                <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                  <div>
-                    <h3 class="font-display text-xl font-semibold text-deep-brown mb-1">
-                      {market.name}
-                      {index === 0 && (
-                        <span class="ml-2 inline-block bg-sage-green text-salt-white text-xs font-semibold px-2 py-1 rounded-full">
-                          Next Up!
-                        </span>
-                      )}
-                    </h3>
-                    <p class="text-caramel font-medium mb-2">{market.time}</p>
-                    <p class="text-sesame-brown text-sm mb-1">
-                      📍 {market.address} • {market.booth}
-                    </p>
-                    <p class="text-sesame-brown text-sm italic">{market.description}</p>
+            <div class="border-t border-warm-cream pt-4 mb-5">
+              <p class="font-semibold text-deep-brown mb-3">Hours</p>
+              <div class="space-y-2">
+                {currentLocation.hours.map((schedule) => (
+                  <div class="flex justify-between text-sesame-brown">
+                    <span>{schedule.days}</span>
+                    <span class="font-medium">{schedule.time}</span>
                   </div>
-
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(market.address)}`}
-                    target="_blank"
-                    rel="noopener"
-                    class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-5 py-2.5 rounded-full font-medium text-sm hover:bg-caramel transition-all whitespace-nowrap self-start"
-                  >
-                    Get Directions
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                    </svg>
-                  </a>
-                </div>
+                ))}
               </div>
             </div>
+
+            <a
+              href={currentLocation.mapsUrl}
+              target="_blank"
+              rel="noopener"
+              class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-5 py-2.5 rounded-full font-medium hover:bg-caramel transition-colors"
+            >
+              Get Directions
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   </section>
