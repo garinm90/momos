@@ -1,0 +1,159 @@
+backend:
+  name: github
+  repo: garinm90/momos
+  branch: main
+  # Add a Cloudflare Worker OAuth bridge and uncomment the next lines for production login.
+  # base_url: https://your-auth-worker.your-subdomain.workers.dev
+  # auth_endpoint: /auth
+
+media_folder: public/images
+public_folder: /images
+
+site_url: https://momospretzels.com
+logo_url: /images/logo.jpg
+
+collections:
+  - name: site-settings
+    label: Site Settings
+    delete: false
+    files:
+      - name: general
+        label: Business Settings
+        file: src/content/site-settings/general.json
+        fields:
+          - { label: Business Name, name: businessName, widget: string }
+          - { label: Tagline, name: tagline, widget: string }
+          - { label: Email, name: email, widget: string }
+          - { label: Phone, name: phone, widget: string, required: false }
+          - { label: Facebook URL, name: facebookUrl, widget: string }
+          - { label: Facebook Reviews URL, name: facebookReviewsUrl, widget: string }
+          - { label: Instagram URL, name: instagramUrl, widget: string }
+          - { label: Contact Form Action, name: contactFormAction, widget: string }
+          - { label: Contact Response Time, name: contactResponseTime, widget: text }
+
+  - name: homepage
+    label: Homepage
+    delete: false
+    files:
+      - name: home
+        label: Homepage Content
+        file: src/content/homepage/home.json
+        fields:
+          - { label: Hero Title, name: heroTitle, widget: string }
+          - { label: Hero Subtitle, name: heroSubtitle, widget: string }
+          - { label: Hero Body, name: heroBody, widget: text }
+          - { label: Find Us CTA Label, name: findUsCtaLabel, widget: string }
+          - { label: Find Us CTA URL, name: findUsCtaUrl, widget: string }
+          - { label: Menu CTA Label, name: menuCtaLabel, widget: string }
+          - { label: Menu CTA URL, name: menuCtaUrl, widget: string }
+          - { label: Featured Section Title, name: featuredTitle, widget: string }
+          - { label: Featured Section Intro, name: featuredIntro, widget: text }
+          - { label: Find Us Section Title, name: findUsTitle, widget: string }
+          - { label: Find Us Section Intro, name: findUsIntro, widget: text }
+          - { label: Reviews Section Title, name: reviewsTitle, widget: string }
+          - { label: Reviews Section Intro, name: reviewsIntro, widget: text }
+          - { label: Story Title, name: storyTitle, widget: string }
+          - { label: Story Lead, name: storyLead, widget: text }
+          - { label: Story Body, name: storyBody, widget: text }
+          - { label: Story CTA Label, name: storyCtaLabel, widget: string }
+          - { label: Story CTA URL, name: storyCtaUrl, widget: string }
+          - { label: Social CTA Title, name: socialTitle, widget: string }
+          - { label: Social CTA Body, name: socialBody, widget: text }
+          - label: Featured Menu Items
+            name: featuredMenuItems
+            widget: relation
+            collection: menu
+            search_fields: [name]
+            value_field: '{{slug}}'
+            display_fields: [name, price]
+            multiple: true
+          - label: Featured Review Items
+            name: featuredReviewItems
+            widget: relation
+            collection: reviews
+            search_fields: [author, text]
+            value_field: '{{slug}}'
+            display_fields: [author, dateLabel]
+            multiple: true
+
+  - name: locations
+    label: Market Locations
+    label_singular: Location
+    folder: src/content/locations
+    create: true
+    slug: '{{slug}}'
+    extension: json
+    format: json
+    summary: '{{name}}'
+    fields:
+      - { label: Market Name, name: name, widget: string }
+      - { label: Date Label, name: datesLabel, widget: string }
+      - { label: Venue, name: venue, widget: string }
+      - { label: Address, name: address, widget: string }
+      - { label: Maps URL, name: mapsUrl, widget: string }
+      - label: Hours
+        name: hours
+        widget: list
+        fields:
+          - { label: Days, name: days, widget: string }
+          - { label: Time, name: time, widget: string }
+      - { label: Active, name: isActive, widget: boolean, default: true }
+      - { label: Sort Order, name: sortOrder, widget: number, value_type: int, default: 0 }
+
+  - name: menu
+    label: Menu Items
+    label_singular: Menu Item
+    folder: src/content/menu
+    create: true
+    slug: '{{slug}}'
+    extension: json
+    format: json
+    summary: '{{name}} - {{price}}'
+    fields:
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - { label: Food, value: food }
+          - { label: Drinks, value: drinks }
+      - { label: Name, name: name, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Price, name: price, widget: string }
+      - { label: Image, name: image, widget: image, required: false }
+      - { label: Image Alt Text, name: alt, widget: string, required: false }
+      - { label: Badge, name: badge, widget: string, required: false }
+      - { label: Available, name: isAvailable, widget: boolean, default: true }
+      - { label: Featured on Homepage, name: isFeatured, widget: boolean, default: false }
+      - { label: Sort Order, name: sortOrder, widget: number, value_type: int, default: 0 }
+
+  - name: reviews
+    label: Reviews
+    label_singular: Review
+    folder: src/content/reviews
+    create: true
+    slug: '{{slug}}'
+    extension: json
+    format: json
+    summary: '{{author}} - {{dateLabel}}'
+    fields:
+      - { label: Author, name: author, widget: string }
+      - { label: Review Text, name: text, widget: text }
+      - { label: Stars, name: stars, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+      - { label: Context, name: context, widget: string, required: false }
+      - { label: Date Label, name: dateLabel, widget: string, required: false }
+      - { label: Featured on Homepage, name: isFeatured, widget: boolean, default: false }
+      - { label: Sort Order, name: sortOrder, widget: number, value_type: int, default: 0 }
+
+  - name: faqs
+    label: FAQs
+    label_singular: FAQ
+    folder: src/content/faqs
+    create: true
+    slug: '{{slug}}'
+    extension: json
+    format: json
+    summary: '{{question}}'
+    fields:
+      - { label: Question, name: question, widget: string }
+      - { label: Answer, name: answer, widget: text }
+      - { label: Sort Order, name: sortOrder, widget: number, value_type: int, default: 0 }

@@ -1,0 +1,11 @@
+{
+  "category": "food",
+  "name": "Pretzel Dog",
+  "description": "A juicy all-beef hot dog wrapped in fresh-baked pretzel dough. The perfect savory treat.",
+  "price": "$8",
+  "image": "/images/IMG_0690.jpg",
+  "alt": "Fresh-baked pretzel dough wrapped around a pretzel dog",
+  "isAvailable": true,
+  "isFeatured": false,
+  "sortOrder": 4
+}

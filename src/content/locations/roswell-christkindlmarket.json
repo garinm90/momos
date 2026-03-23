@@ -1,0 +1,14 @@
+{
+  "name": "Christkindlmarket Roswell",
+  "datesLabel": "November 21st - December 23rd",
+  "venue": "Bulloch Hall Roswell",
+  "address": "180 Bulloch Ave, Roswell, GA 30075",
+  "mapsUrl": "https://maps.app.goo.gl/7PNpGqz7Ztugzuux5",
+  "hours": [
+    { "days": "Monday - Thursday", "time": "3 pm - 8 pm" },
+    { "days": "Friday & Saturday", "time": "12 pm - 9 pm" },
+    { "days": "Sunday", "time": "12 pm - 8 pm" }
+  ],
+  "isActive": true,
+  "sortOrder": 1
+}

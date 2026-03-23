@@ -1,19 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getActiveLocations, getSiteSettings } from '../lib/content';
 
-// Current location
-const currentLocation = {
-  name: "Christkindlmarket Roswell",
-  dates: "November 21st – December 23rd",
-  venue: "Bulloch Hall Roswell",
-  address: "180 Bulloch Ave, Roswell, GA 30075",
-  mapsUrl: "https://maps.app.goo.gl/7PNpGqz7Ztugzuux5",
-  hours: [
-    { days: "Monday – Thursday", time: "3 pm – 8 pm" },
-    { days: "Friday & Saturday", time: "12 pm – 9 pm" },
-    { days: "Sunday", time: "12 pm – 8 pm" }
-  ]
-};
+const [locations, siteSettings] = await Promise.all([getActiveLocations(), getSiteSettings()]);
 ---
 
 <Layout title="Find Us | Momo's Pretzels" description="Find Momo's Pretzels at farmers markets near you. Check our schedule for upcoming market dates and locations.">
@@ -31,9 +20,9 @@ const currentLocation = {
         </div>
         <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
           <picture>
-            <source srcset="/images/farmers-market-booth.webp" type="image/webp" />
+            <source srcset="/images/IMG_7965.webp" type="image/webp" />
             <img
-              src="/images/farmers-market-booth.jpg"
+              src="/images/IMG_7965.jpg"
               alt="Momo's Pretzels booth at the farmers market with customers"
               class="w-full h-full object-cover"
               loading="eager"
@@ -51,44 +40,46 @@ const currentLocation = {
         Upcoming Markets
       </h2>
 
-      <div class="max-w-xl mx-auto">
-        <div class="bg-salt-white rounded-xl overflow-hidden shadow-md border-l-4 border-golden-crust">
-          <div class="bg-deep-brown text-salt-white px-5 py-4">
-            <h3 class="font-display text-xl font-semibold">{currentLocation.name}</h3>
-            <p class="text-warm-cream/80 text-sm mt-1">{currentLocation.dates}</p>
-          </div>
-          <div class="p-6">
-            <p class="font-semibold text-deep-brown mb-1">{currentLocation.venue}</p>
-            <p class="flex items-start gap-2 text-sesame-brown mb-5">
-              <span>📍</span>
-              {currentLocation.address}
-            </p>
-
-            <div class="border-t border-warm-cream pt-4 mb-5">
-              <p class="font-semibold text-deep-brown mb-3">Hours</p>
-              <div class="space-y-2">
-                {currentLocation.hours.map((schedule) => (
-                  <div class="flex justify-between text-sesame-brown">
-                    <span>{schedule.days}</span>
-                    <span class="font-medium">{schedule.time}</span>
-                  </div>
-                ))}
-              </div>
+      <div class="space-y-6">
+        {locations.map((location) => (
+          <div class="max-w-xl mx-auto bg-salt-white rounded-xl overflow-hidden shadow-md border-l-4 border-golden-crust">
+            <div class="bg-deep-brown text-salt-white px-5 py-4">
+              <h3 class="font-display text-xl font-semibold">{location.data.name}</h3>
+              <p class="text-warm-cream/80 text-sm mt-1">{location.data.datesLabel}</p>
             </div>
+            <div class="p-6">
+              <p class="font-semibold text-deep-brown mb-1">{location.data.venue}</p>
+              <p class="flex items-start gap-2 text-sesame-brown mb-5">
+                <span>📍</span>
+                {location.data.address}
+              </p>
 
-            <a
-              href={currentLocation.mapsUrl}
-              target="_blank"
-              rel="noopener"
-              class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-5 py-2.5 rounded-full font-medium hover:bg-caramel transition-colors"
-            >
-              Get Directions
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-              </svg>
-            </a>
+              <div class="border-t border-warm-cream pt-4 mb-5">
+                <p class="font-semibold text-deep-brown mb-3">Hours</p>
+                <div class="space-y-2">
+                  {location.data.hours.map((schedule) => (
+                    <div class="flex justify-between text-sesame-brown">
+                      <span>{schedule.days}</span>
+                      <span class="font-medium">{schedule.time}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <a
+                href={location.data.mapsUrl}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-5 py-2.5 rounded-full font-medium hover:bg-caramel transition-colors"
+              >
+                Get Directions
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </a>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -139,7 +130,7 @@ const currentLocation = {
       </p>
       <div class="flex justify-center gap-4">
         <a
-          href="https://www.facebook.com/profile.php?id=61584372426813"
+          href={siteSettings.facebookUrl}
           target="_blank"
           rel="noopener"
           class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-6 py-3 rounded-full font-semibold hover:bg-caramel transition-all"
@@ -148,7 +139,7 @@ const currentLocation = {
           Facebook
         </a>
         <a
-          href="https://instagram.com/momospretzels"
+          href={siteSettings.instagramUrl}
           target="_blank"
           rel="noopener"
           class="inline-flex items-center gap-2 bg-golden-crust text-salt-white px-6 py-3 rounded-full font-semibold hover:bg-caramel transition-all"

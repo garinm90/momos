@@ -1,0 +1,12 @@
+{
+  "category": "food",
+  "name": "Classic Salted Pretzel",
+  "description": "Traditional soft-baked pretzel with coarse sea salt. Our signature recipe.",
+  "price": "$6",
+  "image": "/images/classic-salted-pretzel.jpg",
+  "alt": "Classic salted pretzel with coarse sea salt on a golden brown twisted surface",
+  "badge": "Best Seller",
+  "isAvailable": true,
+  "isFeatured": true,
+  "sortOrder": 1
+}

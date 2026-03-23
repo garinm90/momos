@@ -1,0 +1,12 @@
+{
+  "category": "food",
+  "name": "Garlic Parmesan Pretzel",
+  "description": "Savory and rich with roasted garlic and aged parmesan cheese.",
+  "price": "$7",
+  "image": "/images/garlic-parmesan-pretzel.jpg",
+  "alt": "Garlic parmesan pretzel topped with roasted garlic and melted parmesan cheese",
+  "badge": "New",
+  "isAvailable": true,
+  "isFeatured": true,
+  "sortOrder": 3
+}

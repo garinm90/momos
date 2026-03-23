@@ -1,0 +1,11 @@
+{
+  "category": "food",
+  "name": "Pretzel Wrapped Bratwurst",
+  "description": "A hearty bratwurst wrapped in signature pretzel dough and baked to golden perfection.",
+  "price": "$9",
+  "image": "/images/IMG_0691.jpg",
+  "alt": "Pretzel wrapped bratwurst fresh from the oven",
+  "isAvailable": true,
+  "isFeatured": false,
+  "sortOrder": 5
+}

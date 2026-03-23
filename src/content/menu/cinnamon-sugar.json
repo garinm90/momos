@@ -1,0 +1,12 @@
+{
+  "category": "food",
+  "name": "Cinnamon Sugar Pretzel",
+  "description": "Sweet and buttery with a perfect coating of cinnamon sugar.",
+  "price": "$7",
+  "image": "/images/cinnamon-sugar-pretzel.jpg",
+  "alt": "Sweet cinnamon sugar pretzel with a sugary coating and butter glaze",
+  "badge": "Fan Favorite",
+  "isAvailable": true,
+  "isFeatured": true,
+  "sortOrder": 2
+}

@@ -1,0 +1,9 @@
+{
+  "category": "drinks",
+  "name": "Strawberry Lemonade",
+  "description": "Our original lemonade brightened with strawberry puree.",
+  "price": "$5",
+  "isAvailable": true,
+  "isFeatured": false,
+  "sortOrder": 2
+}

@@ -1,0 +1,9 @@
+{
+  "category": "drinks",
+  "name": "Original Lemonade",
+  "description": "Fresh-squeezed lemonade made with real lemons.",
+  "price": "$4",
+  "isAvailable": true,
+  "isFeatured": false,
+  "sortOrder": 1
+}

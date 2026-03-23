@@ -1,0 +1,9 @@
+{
+  "category": "drinks",
+  "name": "Bottled Water",
+  "description": "Cold and refreshing.",
+  "price": "$2",
+  "isAvailable": true,
+  "isFeatured": false,
+  "sortOrder": 3
+}

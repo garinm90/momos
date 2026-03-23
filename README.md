@@ -1,31 +1,40 @@
-# Astro Starter Kit: Minimal
+# Momo's Pretzels Site
 
-```sh
-npm create astro@latest -- --template minimal
+Static Astro marketing site for Momo's Pretzels, deployed from GitHub to Cloudflare.
+
+## Content Editing
+
+This project now uses Astro content collections for business-managed content:
+
+- `src/content/site-settings/` for shared business contact and social links
+- `src/content/homepage/` for homepage copy and featured content references
+- `src/content/locations/` for the `find-us` schedule
+- `src/content/menu/` for menu items and pricing
+- `src/content/reviews/` for testimonials
+- `src/content/faqs/` for the contact page FAQ list
+
+The non-technical editor UI is scaffolded at `/admin` using Decap CMS.
+
+## Cloudflare / GitHub Publishing Flow
+
+1. An editor updates content in `/admin`.
+2. Decap CMS commits the content change to GitHub.
+3. Cloudflare rebuilds and republishes the static site from GitHub.
+
+For production login, Decap CMS still needs a GitHub OAuth bridge. The CMS config is prepared for a Cloudflare Worker endpoint:
+
+```yml
+backend:
+  name: github
+  repo: garinm90/momos
+  branch: main
+  # base_url: https://your-auth-worker.your-subdomain.workers.dev
+  # auth_endpoint: /auth
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+After the Worker is configured with the GitHub OAuth app credentials, uncomment `base_url` and `auth_endpoint` in `public/admin/config.yml`.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -37,7 +46,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`         | Preview your build locally, before deploying     |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
