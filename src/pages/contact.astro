@@ -1,8 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getFaqs, getSiteSettings } from '../lib/content';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { getFaqs, getMediaContent, getSiteSettings } from '../lib/content';
 
-const [faqs, siteSettings] = await Promise.all([getFaqs(), getSiteSettings()]);
+const [faqs, media, siteSettings] = await Promise.all([
+  getFaqs(),
+  getMediaContent(),
+  getSiteSettings()
+]);
 ---
 
 <Layout title="Contact | Momo's Pretzels" description="Get in touch with Momo's Pretzels. Questions, special orders, or just want to say hello - we'd love to hear from you!">
@@ -19,15 +24,14 @@ const [faqs, siteSettings] = await Promise.all([getFaqs(), getSiteSettings()]);
           </p>
         </div>
         <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-          <picture>
-            <source srcset="/images/IMG_7961.webp" type="image/webp" />
-            <img
-              src="/images/IMG_7961.jpg"
-              alt="Welcoming scene at Momo's Pretzels market booth"
-              class="w-full h-full object-cover"
-              loading="eager"
-            />
-          </picture>
+          <ResponsiveImage
+            src={media.contactHeroImage}
+            alt={media.contactHeroAlt}
+            widths={[800, 1600]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
         </div>
       </div>
     </div>

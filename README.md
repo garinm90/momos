@@ -7,6 +7,7 @@ Static Astro marketing site for Momo's Pretzels, deployed from GitHub to Cloudfl
 This project now uses Astro content collections for business-managed content:
 
 - `src/content/site-settings/` for shared business contact and social links
+- `src/content/media/` for sitewide and page-level images
 - `src/content/homepage/` for homepage copy and featured content references
 - `src/content/locations/` for the `find-us` schedule
 - `src/content/menu/` for menu items and pricing
@@ -14,6 +15,7 @@ This project now uses Astro content collections for business-managed content:
 - `src/content/faqs/` for the contact page FAQ list
 
 The non-technical editor UI is scaffolded at `/admin` using Decap CMS.
+Decap uploads originals into `public/images/`, and `npm run images:optimize` generates matching WebP variants used by the site templates.
 
 ## Cloudflare / GitHub Publishing Flow
 
@@ -41,6 +43,7 @@ All commands are run from the root of the project, from a terminal:
 | Command                   | Action                                           |
 | :------------------------ | :----------------------------------------------- |
 | `npm install`             | Installs dependencies                            |
+| `npm run images:optimize` | Regenerates optimized WebP variants for uploads  |
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |

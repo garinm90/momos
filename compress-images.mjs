@@ -1,12 +1,13 @@
 import sharp from 'sharp';
-import { readdir, mkdir, stat } from 'fs/promises';
+import { readdir, mkdir, stat, access } from 'fs/promises';
+import { constants } from 'fs';
 import { join, extname, basename } from 'path';
 
 const INPUT_DIR = './public/images';
 const OUTPUT_DIR = './public/images';
-const MAX_WIDTH = 1200;
-const JPG_QUALITY = 75;
+const MAX_WIDTH = 1600;
 const WEBP_QUALITY = 75;
+const RESPONSIVE_WIDTHS = [400, 800, 1200, 1600];
 
 async function compressImages() {
   await mkdir(OUTPUT_DIR, { recursive: true });
@@ -33,15 +34,33 @@ async function compressImages() {
       const image = sharp(inputPath);
       const metadata = await image.metadata();
 
-      const resizeOpts = metadata.width > MAX_WIDTH
+      const resizeOpts = metadata.width && metadata.width > MAX_WIDTH
         ? { width: MAX_WIDTH }
         : {};
 
-      // Generate WebP version
-      await image
-        .resize(resizeOpts)
-        .webp({ quality: WEBP_QUALITY })
-        .toFile(webpPath);
+      if (await needsWrite(inputPath, webpPath)) {
+        await image
+          .clone()
+          .resize({ ...resizeOpts, withoutEnlargement: true })
+          .webp({ quality: WEBP_QUALITY })
+          .toFile(webpPath);
+      }
+
+      const variantWidths = RESPONSIVE_WIDTHS.filter((width) => !metadata.width || width <= MAX_WIDTH);
+
+      for (const width of variantWidths) {
+        const variantPath = join(OUTPUT_DIR, `${name}-${width}w.webp`);
+
+        if (!(await needsWrite(inputPath, variantPath))) {
+          continue;
+        }
+
+        await image
+          .clone()
+          .resize({ width, withoutEnlargement: true })
+          .webp({ quality: WEBP_QUALITY })
+          .toFile(variantPath);
+      }
 
       const webpStats = await stat(webpPath);
       totalWebp += webpStats.size;
@@ -57,6 +76,17 @@ async function compressImages() {
   console.log(`   Original total: ${formatSize(totalOriginal)}`);
   console.log(`   WebP total: ${formatSize(totalWebp)}`);
   console.log(`   Savings: ${formatSize(totalOriginal - totalWebp)} (${Math.round((1 - totalWebp / totalOriginal) * 100)}%)`);
+}
+
+async function needsWrite(inputPath, outputPath) {
+  try {
+    await access(outputPath, constants.F_OK);
+  } catch {
+    return true;
+  }
+
+  const [inputStats, outputStats] = await Promise.all([stat(inputPath), stat(outputPath)]);
+  return inputStats.mtimeMs > outputStats.mtimeMs;
 }
 
 function formatSize(bytes) {

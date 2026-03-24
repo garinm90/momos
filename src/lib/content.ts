@@ -17,6 +17,11 @@ export async function getSiteSettings() {
   return requireEntry(entry, 'Missing site settings content at src/content/site-settings/general.json').data;
 }
 
+export async function getMediaContent() {
+  const entry = await getEntry('media', 'site-images');
+  return requireEntry(entry, 'Missing media content at src/content/media/site-images.json').data;
+}
+
 export async function getHomepageContent() {
   const entry = await getEntry('homepage', 'home');
   return requireEntry(entry, 'Missing homepage content at src/content/homepage/home.json').data;

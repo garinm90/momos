@@ -16,6 +16,32 @@ const siteSettings = defineCollection({
   })
 });
 
+const media = defineCollection({
+  loader: glob({ pattern: '**/*.json', base: './src/content/media' }),
+  schema: z.object({
+    logoImage: z.string().startsWith('/images/'),
+    logoAlt: z.string(),
+    homeHeroImage: z.string().startsWith('/images/'),
+    homeHeroAlt: z.string(),
+    homeStoryImage: z.string().startsWith('/images/'),
+    homeStoryAlt: z.string(),
+    aboutHeroImage: z.string().startsWith('/images/'),
+    aboutHeroAlt: z.string(),
+    aboutGallery: z.array(
+      z.object({
+        image: z.string().startsWith('/images/'),
+        alt: z.string()
+      })
+    ).min(1),
+    findUsHeroImage: z.string().startsWith('/images/'),
+    findUsHeroAlt: z.string(),
+    contactHeroImage: z.string().startsWith('/images/'),
+    contactHeroAlt: z.string(),
+    reviewsHeroImage: z.string().startsWith('/images/'),
+    reviewsHeroAlt: z.string()
+  })
+});
+
 const homepage = defineCollection({
   loader: glob({ pattern: '**/*.json', base: './src/content/homepage' }),
   schema: z.object({
@@ -103,6 +129,7 @@ const faqs = defineCollection({
 
 export const collections = {
   siteSettings,
+  media,
   homepage,
   locations,
   menu,

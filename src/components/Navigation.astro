@@ -1,8 +1,9 @@
 ---
-import { getSiteSettings } from '../lib/content';
+import ResponsiveImage from './ResponsiveImage.astro';
+import { getMediaContent, getSiteSettings } from '../lib/content';
 
 const currentPath = Astro.url.pathname;
-const siteSettings = await getSiteSettings();
+const [siteSettings, media] = await Promise.all([getSiteSettings(), getMediaContent()]);
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -19,10 +20,7 @@ const navLinks = [
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <a href="/" class="flex items-center group">
-        <picture>
-          <source srcset="/images/logo.webp" type="image/webp" />
-          <img src="/images/logo.jpg" alt="Momo's Pretzels - Baked with Love" class="h-14 w-auto" />
-        </picture>
+        <ResponsiveImage src={media.logoImage} alt={media.logoAlt} class="h-14 w-auto" />
       </a>
 
       <!-- Desktop Navigation -->

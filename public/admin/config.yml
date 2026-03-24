@@ -75,6 +75,36 @@ collections:
             display_fields: [author, dateLabel]
             multiple: true
 
+  - name: media
+    label: Images
+    delete: false
+    files:
+      - name: site-images
+        label: Site Images
+        file: src/content/media/site-images.json
+        fields:
+          - { label: Logo Image, name: logoImage, widget: image }
+          - { label: Logo Alt Text, name: logoAlt, widget: string }
+          - { label: Homepage Hero Image, name: homeHeroImage, widget: image }
+          - { label: Homepage Hero Alt Text, name: homeHeroAlt, widget: string }
+          - { label: Homepage Story Image, name: homeStoryImage, widget: image }
+          - { label: Homepage Story Alt Text, name: homeStoryAlt, widget: string }
+          - { label: About Hero Image, name: aboutHeroImage, widget: image }
+          - { label: About Hero Alt Text, name: aboutHeroAlt, widget: string }
+          - label: About Gallery Images
+            name: aboutGallery
+            widget: list
+            summary: '{{fields.alt}}'
+            fields:
+              - { label: Image, name: image, widget: image }
+              - { label: Alt Text, name: alt, widget: string }
+          - { label: Find Us Hero Image, name: findUsHeroImage, widget: image }
+          - { label: Find Us Hero Alt Text, name: findUsHeroAlt, widget: string }
+          - { label: Contact Hero Image, name: contactHeroImage, widget: image }
+          - { label: Contact Hero Alt Text, name: contactHeroAlt, widget: string }
+          - { label: Reviews Hero Image, name: reviewsHeroImage, widget: image }
+          - { label: Reviews Hero Alt Text, name: reviewsHeroAlt, widget: string }
+
   - name: locations
     label: Market Locations
     label_singular: Location

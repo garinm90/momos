@@ -1,0 +1,50 @@
+{
+  "logoImage": "/images/logo.jpg",
+  "logoAlt": "Momo's Pretzels - Baked with Love",
+  "homeHeroImage": "/images/hero-pretzels.jpg",
+  "homeHeroAlt": "Fresh golden pretzels with coarse sea salt, freshly baked and ready to enjoy",
+  "homeStoryImage": "/images/momo-baker.jpg",
+  "homeStoryAlt": "Momo smiling while holding freshly baked pretzels at the farmers market",
+  "aboutHeroImage": "/images/momo-baker.jpg",
+  "aboutHeroAlt": "Momo, the baker and owner of Momo's Pretzels, in her apron with a warm smile",
+  "aboutGallery": [
+    {
+      "image": "/images/IMG_0643.jpg",
+      "alt": "Hands twisting pretzel dough into traditional shape"
+    },
+    {
+      "image": "/images/IMG_0644.jpg",
+      "alt": "Fresh pretzel dough rising in bowls"
+    },
+    {
+      "image": "/images/IMG_0645.jpg",
+      "alt": "Golden pretzels baking in the oven"
+    },
+    {
+      "image": "/images/IMG_7960.jpg",
+      "alt": "Pretzels displayed at the farmers market booth"
+    },
+    {
+      "image": "/images/IMG_0646.jpg",
+      "alt": "Adding coarse sea salt to freshly baked pretzels"
+    },
+    {
+      "image": "/images/IMG_7959.jpg",
+      "alt": "Happy customers enjoying pretzels at the market"
+    },
+    {
+      "image": "/images/IMG_0105.jpg",
+      "alt": "Fresh baking ingredients - flour, salt, butter, yeast"
+    },
+    {
+      "image": "/images/IMG_0647.jpg",
+      "alt": "Fresh pretzels cooling on a wire rack"
+    }
+  ],
+  "findUsHeroImage": "/images/IMG_7965.jpg",
+  "findUsHeroAlt": "Momo's Pretzels booth at the farmers market with customers",
+  "contactHeroImage": "/images/IMG_7961.jpg",
+  "contactHeroAlt": "Welcoming scene at Momo's Pretzels market booth",
+  "reviewsHeroImage": "/images/IMG_7958.jpg",
+  "reviewsHeroAlt": "Happy customers enjoying pretzels at the farmers market"
+}

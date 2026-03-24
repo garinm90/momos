@@ -1,8 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { getActiveLocations, getSiteSettings } from '../lib/content';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { getActiveLocations, getMediaContent, getSiteSettings } from '../lib/content';
 
-const [locations, siteSettings] = await Promise.all([getActiveLocations(), getSiteSettings()]);
+const [locations, media, siteSettings] = await Promise.all([
+  getActiveLocations(),
+  getMediaContent(),
+  getSiteSettings()
+]);
 ---
 
 <Layout title="Find Us | Momo's Pretzels" description="Find Momo's Pretzels at farmers markets near you. Check our schedule for upcoming market dates and locations.">
@@ -19,15 +24,14 @@ const [locations, siteSettings] = await Promise.all([getActiveLocations(), getSi
           </p>
         </div>
         <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-          <picture>
-            <source srcset="/images/IMG_7965.webp" type="image/webp" />
-            <img
-              src="/images/IMG_7965.jpg"
-              alt="Momo's Pretzels booth at the farmers market with customers"
-              class="w-full h-full object-cover"
-              loading="eager"
-            />
-          </picture>
+          <ResponsiveImage
+            src={media.findUsHeroImage}
+            alt={media.findUsHeroAlt}
+            widths={[800, 1600]}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            class="w-full h-full object-cover"
+            loading="eager"
+          />
         </div>
       </div>
     </div>

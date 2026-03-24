@@ -1,5 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import { getMediaContent } from '../lib/content';
+
+const media = await getMediaContent();
 
 const values = [
   {
@@ -56,15 +60,14 @@ const steps = [
         <!-- Image -->
         <div class="flex-1">
           <div class="aspect-square max-w-md mx-auto rounded-2xl bg-warm-cream overflow-hidden shadow-xl">
-            <picture>
-              <source srcset="/images/momo-baker.webp" type="image/webp" />
-              <img
-                src="/images/momo-baker.jpg"
-                alt="Momo, the baker and owner of Momo's Pretzels, in her apron with a warm smile"
-                class="w-full h-full object-cover"
-                loading="eager"
-              />
-            </picture>
+            <ResponsiveImage
+              src={media.aboutHeroImage}
+              alt={media.aboutHeroAlt}
+              widths={[480, 960]}
+              sizes="(max-width: 768px) 100vw, 448px"
+              class="w-full h-full object-cover"
+              loading="eager"
+            />
           </div>
         </div>
 
@@ -167,94 +170,18 @@ const steps = [
       </h2>
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-          <picture>
-            <source srcset="/images/IMG_0643.webp" type="image/webp" />
-            <img
-              src="/images/IMG_0643.jpg"
-              alt="Hands twisting pretzel dough into traditional shape"
+        {media.aboutGallery.map((item) => (
+          <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+            <ResponsiveImage
+              src={item.image}
+              alt={item.alt}
+              widths={[320, 640]}
+              sizes="(max-width: 768px) 50vw, 25vw"
               class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
-          </picture>
-        </div>
-        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-          <picture>
-            <source srcset="/images/IMG_0644.webp" type="image/webp" />
-            <img
-              src="/images/IMG_0644.jpg"
-              alt="Fresh pretzel dough rising in bowls"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-          </picture>
-        </div>
-        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-          <picture>
-            <source srcset="/images/IMG_0645.webp" type="image/webp" />
-            <img
-              src="/images/IMG_0645.jpg"
-              alt="Golden pretzels baking in the oven"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-          </picture>
-        </div>
-        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-          <picture>
-            <source srcset="/images/IMG_7960.webp" type="image/webp" />
-            <img
-              src="/images/IMG_7960.jpg"
-              alt="Pretzels displayed at the farmers market booth"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-          </picture>
-        </div>
-        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-          <picture>
-            <source srcset="/images/IMG_0646.webp" type="image/webp" />
-            <img
-              src="/images/IMG_0646.jpg"
-              alt="Adding coarse sea salt to freshly baked pretzels"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-          </picture>
-        </div>
-        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-          <picture>
-            <source srcset="/images/IMG_7959.webp" type="image/webp" />
-            <img
-              src="/images/IMG_7959.jpg"
-              alt="Happy customers enjoying pretzels at the market"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-          </picture>
-        </div>
-        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-          <picture>
-            <source srcset="/images/IMG_0105.webp" type="image/webp" />
-            <img
-              src="/images/IMG_0105.jpg"
-              alt="Fresh baking ingredients - flour, salt, butter, yeast"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-          </picture>
-        </div>
-        <div class="aspect-square bg-salt-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-          <picture>
-            <source srcset="/images/IMG_0647.webp" type="image/webp" />
-            <img
-              src="/images/IMG_0647.jpg"
-              alt="Fresh pretzels cooling on a wire rack"
-              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              loading="lazy"
-            />
-          </picture>
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>

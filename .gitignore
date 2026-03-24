@@ -12,6 +12,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+# generated responsive image variants
+public/images/*-[0-9]*w.webp
 
 # environment variables
 .env

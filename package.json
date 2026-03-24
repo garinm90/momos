@@ -3,8 +3,9 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "npm run images:optimize && astro dev",
+    "build": "npm run images:optimize && astro build",
+    "images:optimize": "node compress-images.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.8",
+    "sharp": "^0.34.5",
     "typescript": "^5.9.3"
   }
 }
